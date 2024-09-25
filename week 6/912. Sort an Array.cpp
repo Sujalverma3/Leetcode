@@ -59,3 +59,29 @@ public:
         return nums;
     }
 };
+//MERGE SORT O(nlogn)
+class Solution {
+public:
+    vector<int> sortArray(vector<int>& a) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(nullptr);
+        cout.tie(nullptr);
+        int big = a[0];
+        int small = a[0];
+        for (int i : a) {
+            big = max(big, i);
+            small = min(small, i);
+        }
+        vector<int> b(big - small + 1);
+        for (int i : a)
+            b[i - small]++;
+        int index = 0;
+        for (int i = 0; i < b.size(); i++) {
+
+            for (int j = 0; j < b[i]; j++) {
+                a[index++] = i + small;
+            }
+        }
+        return a;
+    }
+};
